@@ -1,15 +1,20 @@
 <template>
   <div>
-    <router-view></router-view>
+      <component :is="!loginCheck ? 'pre-auth' : 'post-auth'"></component>
   </div>
 </template>
 
 <script>
-// import Main from "@/components/main/main.vue"
-export default {
-/*   components : {
-    Main
-  } */
+import PreAuth from "@/components/cmm/PreAuth.vue"
+import PostAuth from "@/components/cmm/PostAuth.vue"
+import {store} from "../store"
+export default{
+    components : {PreAuth, PostAuth},
+    computed:{
+        loginCheck: function(){
+            return store.state.authCheck
+        }
+    }
 }
 </script>
 

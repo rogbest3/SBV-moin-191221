@@ -14,14 +14,14 @@
 							<div class="moin-input-group">
 								<div class="moin-input">
 									<label style="color: rgb(116, 127, 155);">이메일 (Email)</label>
-									<input class="fs-block" placeholder="youremail@email.com" type="text" tabindex="0" value="">
+									<input v-model="cemail" class="fs-block" placeholder="youremail@email.com" type="text" tabindex="0" value="">
 								</div>
 								<p class="moin-error"></p>
 							</div>
 							<div class="themoin-password-input moin-input-group">
 								<div class="moin-input">
 									<label style="color: rgb(116, 127, 155);">비밀번호 (Password)</label>
-									<input class="fs-block" placeholder="영문 숫자 조합 8~20" type="password" tabindex="0" value="">
+									<input v-model="cpwd" class="fs-block" placeholder="영문 숫자 조합 8~20" type="password" tabindex="0" value="">
 								</div>
 								<p class="moin-error"></p>
 							</div>
@@ -350,7 +350,7 @@ FAX: 0504-393-9687
 							<div class="moin-input-group">
 								<div class="moin-input">
 									<label style="color: rgb(116, 127, 155);">이름 (First name)</label>
-									<input class="fs-block" placeholder="Gildong" type="text" tabindex="0" value="">
+									<input v-model="cname" class="fs-block" placeholder="Gildong" type="text" tabindex="0" value="">
 								</div>
 								<p class="moin-error"></p>
 							</div>
@@ -362,7 +362,9 @@ FAX: 0504-393-9687
 								<p class="moin-error"></p>
 							</div>
 							<div class="themoin-sms-request">
-								<div class="moin-input-group moin-dropdown">
+								
+								<!-- moin-input-group moin-dropdown open -->
+								<div class="moin-input-group moin-dropdown">	
 									<label>국가 번호 (Country Code)</label>
 									<a id="phone1" class="dropdown-toggle">+82 (South Korea)
 										<img class="pull-right" src="https://img.themoin.com/public/img/ic-dropdown-p.png">
@@ -376,7 +378,7 @@ FAX: 0504-393-9687
 									</div>
 									<div class="moin-input">
 										<label style="color: rgb(116, 127, 155);">휴대전화 번호 (Mobile)</label>
-										<input class="fs-block" placeholder="01012345678" type="text" tabindex="0" maxlength="11" value="">
+										<input v-model="cphone" class="fs-block" placeholder="01012345678" type="text" tabindex="0" maxlength="11" value="">
 									</div>
 									<p class="moin-error"></p>
 								</div>
@@ -395,7 +397,7 @@ FAX: 0504-393-9687
 								</div>
 								<p class="moin-error"></p>
 							</div>
-							<button class="btn-submit" type="submit" @click="join_btn">가입완료</button>
+							<button class="btn-submit" type="submit" @click.prevent="join_btn">가입완료</button>
 						</form>
 					</div><br><br><br>
 				</div>
@@ -405,15 +407,41 @@ FAX: 0504-393-9687
 	</div>
 </template>
 <script>
+import axios from "axios"
 export default{
 	data(){
 		return{
+			context : 'http://localhost:8080/',
+			cemail : '',
+			cpwd : '',
+			cname : '',
+			cphone : ''
 
 		}
 	},
 	methods : {
 		join_btn(){
-			this.$router.push('/login')
+			let url = `${this.context}/join`
+			let data = {
+				cemail : this.cemail,
+				cpwd : this.cpwd,
+				cname : this.cname,
+				cphone : this.cphone
+			}
+			let headers = {
+				'authorization' : 'JWT fefege..',
+				'Accept' : 'application/json',
+				'Content-Type' : 'application/json'
+			}
+			axios
+			.post(url, data, headers)
+			.then(()=>{
+				this.$router.push('/login')	
+			})
+			.catch(()=>{
+				alert('AXIOS 실패')
+			})
+			
 		}
 	}
 }
