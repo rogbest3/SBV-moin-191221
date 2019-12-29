@@ -1,8 +1,7 @@
 <template>
-  <div id="root">
-    
+
     <div class="themoin-mypage">
-        <div class="tab-container">
+        <!-- <div class="tab-container">
             <div class="tab">
                 <a class="" @click.prevent="cusinfo_a">회원 정보</a>
                 <a class="active" @click.prevent="">비밀번호 변경</a>
@@ -13,7 +12,7 @@
                 <img src="https://img.themoin.com/public/img/img-man-s.svg">
                 <p>rogbest@naver.com</p>
             </div>
-        </div>
+        </div> -->
         <div class="themoin-mypage-password">
             <div class="content">
                 <h1>비밀번호 변경 안내</h1>
@@ -57,7 +56,6 @@
         </div>
     </div>
 
-  </div>
 </template>
 
 <script>
@@ -107,7 +105,7 @@ export default {
           if(res.data.result === "SUCCESS"){
             store.state.customer.cpwd = res.data.customer.cpwd
             alert(`비밀번호 수정 성공 - ${store.state.customer.cpwd}`)
-            this.$router.push('/pwdchg')
+            this.$router.push('/cusinfo')
           }else{
             alert('비밀번호 수정  실패')
           }

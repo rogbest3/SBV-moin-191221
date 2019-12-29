@@ -1,8 +1,7 @@
 <template>
-	<div id="root">
 
 			<div class="themoin-mypage">
-				<div class="tab-container">
+				<!-- <div class="tab-container">
                     <div class="tab">
                         <a class="active" @click.prevent="cusinfo_a">회원 정보</a>
 						<a class="" @click.prevent="pwdchg_a">비밀번호 변경</a>
@@ -13,7 +12,7 @@
                         <img src="https://img.themoin.com/public/img/img-man-s.svg">
                         <p>rogbest@naver.com</p>
                     </div>
-                </div>
+                </div> -->
 				<div class="themoin-mypage-profile"><br>
                     <h1>회원정보</h1><br>
                     <p class="newmoin-text-text-button" style="text-align: center;">기입한 연락처로 송금 관련 알림이 발송됩니다. 중요한 안내를 받지 못하는 일이 없도록 정확히 입력해주세요.<br>회원정보는 개인정보처리방침에 따라 안전하게 보호되며, 회원님의 동의없이 공개되지 않습니다.<br>정보 수정을 원하시면 하단의 수정하기 버튼을 눌러주세요.<br></p><br>
@@ -118,33 +117,6 @@
                                     <p class="moin-error"></p>
                                 </div>
                             </div>
-							<div class="form-row">
-                                <div class="subaddress">
-                                    <div class="moin-input">
-                                        <label style="color: rgb(116, 127, 155);">학년</label>
-                                        <input class="fs-block" placeholder="" type="text" tabindex="0" value="" v-model="hak">
-                                    </div>
-                                    <p class="moin-error"></p>
-                                </div>
-                            </div>
-							<div class="form-row">
-                                <div class="subaddress">
-                                    <div class="moin-input">
-                                        <label style="color: rgb(116, 127, 155);">반</label>
-                                        <input class="fs-block" placeholder="" type="text" tabindex="0" value="" v-model="ban">
-                                    </div>
-                                    <p class="moin-error"></p>
-                                </div>
-                            </div>
-							<div class="form-row">
-                                <div class="subaddress">
-                                    <div class="moin-input">
-                                        <label style="color: rgb(116, 127, 155);">성적</label>
-                                        <input class="fs-block" placeholder="" type="text" tabindex="0" v-model="score">
-                                    </div>
-                                    <p class="moin-error"></p>
-                                </div>
-                            </div>
                             <div class="form-row"></div>
                         </form>
                         <div class="daum-container hidden">
@@ -163,8 +135,7 @@
                 </div>
             </div>
 			
-		
-	</div>	
+	
 </template>
 
 <script>
@@ -182,7 +153,8 @@ export default {
 			hak : store.state.customer.hak,
 			ban : store.state.customer.ban,
 			score : store.state.customer.score,
-			sdate : store.state.customer.sdate
+            sdate : store.state.customer.sdate,
+            role : store.state.customer.role
 		}
 	},
 	methods : {
@@ -198,7 +170,8 @@ export default {
 			store.state.customer.hak = this.hak
 			store.state.customer.ban = this.ban
 			store.state.customer.score = this.score
-			store.state.customer.sdate = this.sdate
+            store.state.customer.sdate = this.sdate
+            store.state.customer.role = this.role
 
 			let url = `${this.context}/update`
 			let data = store.state.customer

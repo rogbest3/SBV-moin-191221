@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.stereotype.Component;
 
@@ -17,8 +18,13 @@ import lombok.Data;
 @Data
 @Entity
 @Component
-@Table(name="CUSTOMER")
-public class Customer {
+@Table(name="CUSTOMER", 
+			uniqueConstraints={
+				@UniqueConstraint(
+					columnNames={"CEMAIL"}	//	CEMAIL 유니크
+				)
+})
+public class Customer implements Comparable<Customer>{
 //	private String cno,
 //	cemail,
 //	cpwd,
@@ -58,14 +64,23 @@ public class Customer {
 	@Column(name="UDATE", nullable=true)
 	private String udate;
 	
-	@Column(name="GENDER", nullable=true)
-	private String gender;
+	@Column(name="MALE", nullable=true)
+	private boolean male;
 	@Column(name="HAK", nullable=true)
 	private int hak;
 	@Column(name="BAN", nullable=true)
 	private int ban;
 	@Column(name="SCORE", nullable=true)
 	private int score;
+	@Column(name="ROLE", nullable=true)
+	private String role;
 
+	
+	enum Level{ HIGH, MID, LOW }
+	
+	@Override
+	public int compareTo(Customer o) {
+		return o.score - this.score;
+	}
 	
 }

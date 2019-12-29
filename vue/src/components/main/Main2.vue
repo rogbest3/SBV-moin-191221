@@ -290,6 +290,7 @@ export default{
 			store.state.customer.cphone = ''
 			store.state.customer.id = ''
 			store.state.authCheck = false
+			store.state.showSidebar = false
 			alert(`loginedCemail : ${store.state.customer.cemail}, loginedCpwd : ${store.state.customer.cpwd}`)
 			this.$router.push('/')
 		},

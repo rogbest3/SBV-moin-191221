@@ -7,7 +7,11 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     customer : {},
-    authCheck : false
+    authCheck : false,
+    sidebar : 'preSidebar',
+    nav : 'nav',
+    showSidebar : false
+
     /* loginedCemail : '',
     loginedCpwd : '',
     id : '',

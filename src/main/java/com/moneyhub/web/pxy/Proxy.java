@@ -7,7 +7,7 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("pxy")
 public class Proxy {
 	public int parseInt(String param) {
 	//	Function<String, Integer> f = s -> Integer.parseInt(s);

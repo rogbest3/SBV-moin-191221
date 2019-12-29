@@ -1,29 +1,48 @@
 package com.moneyhub.web.pxy;
-import java.util.ArrayList;
-import org.springframework.context.annotation.Lazy;
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.Function;
+
 import org.springframework.stereotype.Component;
 
-import lombok.Data;
-
-@Component @Data @Lazy
-public class Box<T> {	//	list
-
-	private ArrayList<T> list;
+@Component
+public class Box<T> {
+	HashMap<String, T> box;
 	
-	// box.clear() 에러 보안
-	public Box() { list = new ArrayList<T>(); }
-	
-	public void add(T item){
-		list = new ArrayList<>();
-		list.add(item);
+	public Box() {
+		box = new HashMap<>();
 	}
-	public T get(int i) { return list.get(i); }
 	
-	public ArrayList<T> get() { return list; }
+	public void clear() {
+		box.clear();
+	}
 	
-	public int size() { return list.size(); }
+	public void put(String s, T t) {
+		box.put(s, t);
+	}
 	
-	public String toString() { return list.toString(); }
+	public void put(List<String> x, Inventory<T> y) {
+		
+		box = new HashMap<>();
+		for(int i=0; i<x.size(); i++) {
+			box.put(x.get(i), y.get(i));
+		}
+		
+		box.forEach((k, v)
+				-> System.out.println(
+					String.format("%s : %s", k, v)));
+	}
 	
-	public void clear() { list.clear();}
+	public T get(String k) {
+		Function<String, T> f = o -> box.get(o);
+		return f.apply(k);
+	}
+	
+	public HashMap<String, T> get(){		
+		return box;
+	}
+	
+	public int size() {
+		return box.size();
+	}
 }

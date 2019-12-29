@@ -1,7 +1,7 @@
 <template>
-  <div>
-      회원가입
-  </div>
+	<div>
+
+	</div>
 </template>
 
 <script>

@@ -1,9 +1,9 @@
 <template>
-
 			<div class="themoin-mypage">
 				<!-- <div class="tab-container">
 					<div class="tab">
-						<a class="active" @click.prevent="">회원 정보</a>
+						<a class="active" @click.prevent="admin_a">관리자 변경</a>
+						<a class="" @click.prevent="cusinfo_a">회원 정보</a>
 						<a class="" @click.prevent="pwdchg_a">비밀번호 변경</a>
 						<a class="" @click.prevent="authmgmt_a">인증관리</a>
 						<a class="" @click.prevent="alarm_a">알림설정</a>
@@ -14,7 +14,7 @@
 					</div>
 				</div> -->
 				<div class="themoin-mypage-profile"><br>
-					<h1>회원정보</h1><br>
+					<h1>관리자</h1><br>
 					<p class="newmoin-text-text-button" style="text-align: center;">기입한 연락처로 송금 관련 알림이 발송됩니다. 중요한 안내를 받지 못하는 일이 없도록 정확히 입력해주세요.<br>회원정보는 개인정보처리방침에 따라 안전하게 보호되며, 회원님의 동의없이 공개되지 않습니다.<br>정보 수정을 원하시면 하단의 수정하기 버튼을 눌러주세요.<br></p><br>
 					<div class="themoin-info-preview">
 						<div class="head">로그인 정보</div>
@@ -24,7 +24,7 @@
 								<p class="fs-block">{{cemail}}</p>
 							</li>
 						</ol>
-						<div class="head">회원정보</div>
+						<div class="head">관리자</div>
 						<ol>
 							<li>
 								<p>이름</p>
@@ -77,10 +77,9 @@
 							</li>
 						</ol>
 					</div><br>
-					<button @click.prevent="cusInfoChg_btn" class="next">정보수정하기</button><br><br>
+					<button @click.prevent="adminChg_btn" class="next">정보수정하기</button><br><br>
 				</div>
 			</div>
-
 </template>
 
 <script>
@@ -102,23 +101,8 @@ export default {
 	},
 	methods : {	// cusinfo_a, pwdchg_a, authmgmt_a, alarm_a, refmgmt_a
 
-		cusInfoChg_btn(){
-			this.$router.push('/cusinfochg')
-		},
-		cusinfo_a(){
-			this.$router.push('/cusinfo')
-		},
-		pwdchg_a(){
-			this.$router.push('/pwdchg')
-		},
-		authmgmt_a(){
-			this.$router.push('/authmgmt')
-		},
-		alarm_a(){
-			this.$router.push('/alarm')
-		},
-		refmgmt_a(){
-			this.$router.push('/refmgmt')
+		adminChg_btn(){
+			this.$router.push('/adminchg')
 		}
 	}
 }

@@ -1,8 +1,6 @@
 <template>
-<div id="root">
-
 		<div class="themoin-mypage">
-			<div class="tab-container">
+			<!-- <div class="tab-container">
 				<div class="tab">
 					<a class="" @click.prevent="cusinfo_a">회원 정보</a>
 					<a class="" @click.prevent="pwdchg_a">비밀번호 변경</a>
@@ -13,7 +11,7 @@
 					<img src="https://img.themoin.com/public/img/img-man-s.svg">
 					<p>rogbest@naver.com</p>
 				</div>
-			</div>
+			</div> -->
 			<div class="themoin-mypage-notification">
 				<div class="content">
 					<h1>알림 설정 안내</h1>
@@ -53,8 +51,6 @@
 			</div>
 		</div>
 
-		
-</div>
 </template>
 
 <script>

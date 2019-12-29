@@ -119,8 +119,14 @@ export default{
 					store.state.customer = res.data.customer
 					store.state.authCheck = true
 					alert(`cemail : ${store.state.customer.cemail}, cpwd : ${store.state.customer.cpwd}`)
-
-					this.$router.push({path : '/main2'})
+					if(store.state.customer.role !== 'student'){
+						store.state.sidebar = 'managerSidebar'
+						this.$router.push({path : '/main2'})
+					}else{
+						store.state.sidebar = 'studentSidebar'
+						this.$router.push({path : '/main2'})
+					}
+				
 				}else{
 					alert(`로그인 실패`)
 					this.$router.push({path : '/login'})
